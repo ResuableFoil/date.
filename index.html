@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>What Kind of Date Do You Want to Go On?</h1>
-    <form id="dateForm">
+    <form action="https://formspree.io/f/mqakvpne" method="POST">
         <label>
             <input type="checkbox" name="dateType" value="Swim"> Swim
         </label><br>
@@ -15,7 +15,7 @@
             <input type="checkbox" name="dateType" value="Nature"> Nature
         </label><br>
         <label>
-            <input type="checkbox" name="dateType" value="Recreate"> Recreate
+            <input type="checkbox" name="dateType" value="Recreate a Date"> Recreate a Date
         </label><br>
         <label>
             <input type="checkbox" name="dateType" value="Foodie"> Foodie
@@ -23,40 +23,17 @@
         <label>
             <input type="checkbox" name="dateType" value="Workout"> Workout
         </label><br>
+        <label>
+            <input type="checkbox" name="dateType" value="Art Date"> Art Date
+        </label><br>
+        <label>
+            <input type="checkbox" name="dateType" value="Activity"> Activity
+        </label><br>
         <button type="submit">Submit</button>
     </form>
     <div id="results" style="margin-top: 20px;">
         <h2>Results</h2>
-        <ul id="resultsList"></ul>
+        <p>Results will not display here because the form now sends data directly to Formspree.</p>
     </div>
-
-    <script>
-        const form = document.getElementById('dateForm');
-        const resultsList = document.getElementById('resultsList');
-
-        // Simulated backend storage
-        const results = {};
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(form);
-            const selectedOptions = formData.getAll('dateType');
-
-            selectedOptions.forEach(option => {
-                results[option] = (results[option] || 0) + 1;
-            });
-
-            // Clear previous results
-            resultsList.innerHTML = '';
-            for (const [type, count] of Object.entries(results)) {
-                const listItem = document.createElement('li');
-                listItem.textContent = `${type}: ${count} votes`;
-                resultsList.appendChild(listItem);
-            }
-
-            alert('Thank you for your input!');
-            form.reset();
-        });
-    </script>
 </body>
 </html>
